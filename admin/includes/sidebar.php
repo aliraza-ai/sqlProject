@@ -22,18 +22,13 @@
 
                 <li>
                     <a href="javascript: void(0);">
-                        <i class="mdi mdi-page-layout-sidebar-left"></i>
-                        <span> Layouts </span>
+                        <i class="mdi mdi-calendar-text"></i>
+                        <span> Category </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
-                        <li><a href="layouts-horizontal.html">Horizontal</a></li>
-                        <li><a href="layouts-sidebar-sm.html">Small Sidebar</a></li>
-                        <li><a href="layouts-dark-sidebar.html">Dark Sidebar</a></li>
-                        <li><a href="layouts-dark-topbar.html">Dark Topbar</a></li>
-                        <li><a href="layouts-preloader.html">Preloader</a></li>
-                        <li><a href="layouts-sidebar-collapsed.html">Sidebar Collapsed</a></li>
-                        <li><a href="layouts-boxed.html">Boxed</a></li>
+                        <li><a href="add_cats.php">Add Category</a></li>
+                        <li><a href="view_cats.php">View Category</a></li>
                     </ul>
                 </li>
 

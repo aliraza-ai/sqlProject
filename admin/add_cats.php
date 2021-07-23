@@ -32,6 +32,16 @@
             <!-- ========== Left Sidebar Start ========== -->
             <?php include_once "includes/sidebar.php"?>
             <!-- Left Sidebar End -->
+            <?php
+            if (isset($_POST['add']))
+            {
+                $m=new MyAdmin();
+                $cats=$_POST['cats'];
+                $check=$m->addCates($cats);
+            }
+
+            ?>
+
 
             <!-- ============================================================== -->
             <!-- Start Page Content here -->
@@ -42,13 +52,33 @@
 
                     <!-- Start Content-->
                     <div class="container-fluid">
-                         <div class="card-box" style="text-align: center;">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h2 class="page-header">Add Category</h2>
+                            </div>
+                            <!-- /.col-lg-12 -->
+                        </div>
+                         <div class="card-box">
 
-                            <br><br><br><br><br>
-                            <img src="assets/images/logo-dark.png" width="500">
-                             <br> <br>
-                             <h1>Welcome to SQL Evaluation Portal</h1>
-                             <br><br><br><br><br>
+                             <form role="form" class="col-lg-7" method="post" action="add_cats.php">
+                                    <span style="color:red; font-size:16px;"><?php
+                                        if (isset($_POST['add'])) {
+                                            if($check)
+                                            {
+                                                echo $check;
+                                            }
+                                        }
+                                        ?>
+                                  </span>
+                                 <div class="form-group">
+                                     <label>Title:</label>
+                                     <input class="form-control"  required type="text" name="cats"   placeholder="Enter Category" />
+                                 </div>
+                                 <button type="submit" name="add" class="btn btn-primary"><i class="fa fa-sign-out fa-fw"></i> Add Category</button>
+                                 <button type="reset" class="btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i> Reset</button>
+                             </form>
+
+                                    
                         </div>
                         
                     </div> <!-- container-fluid -->
