@@ -29,6 +29,17 @@ class MyAdmin
 
     }
 
+    function getCatsById($id)
+    {
+        $select="select * from sql_cats where id='$id'";
+        return $this->db->select($select);
+    }
+    function updateCates($cats,$id)
+    {
+        $select="update sql_cats set title='$cats' where id='$id'";
+        return $this->db->select($select);
+    }
+
     function getAllCats()
     {
         $select="select * from sql_cats";
@@ -38,9 +49,33 @@ class MyAdmin
     function deleteCats($id)
     {
         $select="delete from sql_cats where id='$id'";
-        return $this->db->select($select);
+        return $this->db->delete($select);
     }
 
+    function addArticle($cat,$title,$article,$example_detail,$example_code,$quiz)
+    {
+        return $this->db->insert("INSERT INTO articles(cat,title,article_detail,example_details,example_code,quiz,date) VALUES('$cat','$title','$article','$example_detail','$example_code','$quiz',NOW())");
+    }
+
+    function updateArt($cat,$title,$article,$example_detail,$example_code,$quiz,$id)
+    {
+        return $this->db->insert("update articles set cat='$cat',title='$title',article_detail='$article',example_details='$example_detail',example_code='$example_code',quiz='$quiz' where id='$id'");
+    }
+
+    function getArticleAll()
+    {
+        return $this->db->select("select * from articles");
+    }
+    function getArticleById($id)
+    {
+        return $this->db->select("select * from articles where id='$id'");
+    }
+
+    function deleteArt($id)
+    {
+        $select="delete from articles where id='$id'";
+        return $this->db->delete($select);
+    }
 
 
 

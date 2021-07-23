@@ -30,6 +30,20 @@
                         <li><a href="add_cats.php">Add Category</a></li>
                         <li><a href="view_cats.php">View Category</a></li>
                     </ul>
+
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="mdi mdi-archive"></i>
+                        <span> Articles </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li><a href="add_article.php">Add Article</a></li>
+                        <li><a href="view_article.php">View Articles</a></li>
+                    </ul>
+
                 </li>
 
 
