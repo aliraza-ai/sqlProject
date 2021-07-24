@@ -74,7 +74,7 @@ class MyAdmin
     function deleteArt($id)
     {
         $select="delete from articles where id='$id'";
-        return $this->db->delete($select);
+         $this->db->delete($select);
     }
 
 

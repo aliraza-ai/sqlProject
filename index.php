@@ -43,15 +43,18 @@
 
 include_once 'includes/navbar.php';
 
+
+
+
 ?>
     <div class="search-section">
     <div class="masthead single-masthead">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-md-auto">
-                    <form>
-                        <input type="text" class="search-field" placeholder="Search Something ... ">
-                        <button type="submit"><i class="icon icon-search"></i>
+                    <form method="post" action="">
+                        <input type="text" class="search-field" required placeholder="Search Something ... ">
+                        <button type="submit" name="research"><i class="icon icon-search"></i>
                         </button>
                     </form>
                 </div>
@@ -77,80 +80,41 @@ include_once 'includes/navbar.php';
               
             </header>
             <div class="row">
+                <?php
+                    $m=new ManageClient();
+
+                   if(isset($_POST['research']))
+                    {
+                        $research=$_POST['research'];
+                        $getHome=$m->GetResearch($research);
+                    }
+                   else
+                   {
+                       $getHome=$m->getRandomHome();
+                   }
+                    if($getHome)
+                    {
+                        while ($getsHome=$getHome->fetch_assoc())
+                        {
+
+
+
+                ?>
+
                 <div class="col-lg-3">
                     <article class="post"><span class="ico icon-document-text"></span>
-                        <h2><a href="single.html">Hi there! Welcome to our New Website and Blog</a></h2>
+                        <h2><a href="single.html"><?php echo $getsHome['title'];
+                                ?></a></h2>
                         <a href="single.html">Read Article</a>
                     </article>
                 </div>
-                <div class="col-lg-3">
-                    <article class="post"><span class="ico icon-video"></span>
-                        <h2><a href="single.html">Hi there! Welcome to our New Website and Blog</a></h2>
-                        <a href="single.html">Watch Now</a>
-                    </article>
-                </div>
-                <div class="col-lg-3">
-                    <article class="post"><span class="ico icon-document-text"></span>
-                        <h2><a href="single.html">Hi there! Welcome to our New Website and Blog</a></h2>
-                        <a href="single.html">Read Article</a>
-                    </article>
-                </div>
-                <div class="col-lg-3">
-                    <article class="post"><span class="ico icon-document-text"></span>
-                        <h2><a href="single.html">Hi there! Welcome to our New Website and Blog</a></h2>
-                        <a href="single.html">Read Article</a>
-                    </article>
-                </div>
-                <div class="col-lg-3">
-                    <article class="post"><span class="ico icon-video"></span>
-                        <h2><a href="single.html">Hi there! Welcome to our New Website and Blog</a></h2>
-                        <a href="single.html">Watch Now</a>
-                    </article>
-                </div>
-                <div class="col-lg-3">
-                    <article class="post"><span class="ico icon-document-text"></span>
-                        <h2><a href="single.html">Hi there! Welcome to our New Website and Blog</a></h2>
-                        <a href="single.html">Read Article</a>
-                    </article>
-                </div>
-                <div class="col-lg-3">
-                    <article class="post"><span class="ico icon-img"></span>
-                        <h2><a href="single.html">Hi there! Welcome to our New Website and Blog</a></h2>
-                        <a href="single.html">Read Article</a>
-                    </article>
-                </div>
-                <div class="col-lg-3">
-                    <article class="post"><span class="ico icon-document-text"></span>
-                        <h2><a href="single.html">Hi there! Welcome to our New Website and Blog</a></h2>
-                        <a href="single.html">Read Article</a>
-                    </article>
-                </div>
-                <div class="col-lg-3">
-                    <article class="post"><span class="ico icon-document-text"></span>
-                        <h2><a href="single.html">Hi there! Welcome to our New Website and Blog</a></h2>
-                        <a href="single.html">Read Article</a>
-                    </article>
-                </div>
-                <div class="col-lg-3">
-                    <article class="post"><span class="ico icon-img"></span>
-                        <h2><a href="single.html">Hi there! Welcome to our New Website and Blog</a></h2>
-                        <a href="single.html">Read Article</a>
-                    </article>
-                </div>
-                <div class="col-lg-3">
-                    <article class="post"><span class="ico icon-document-text"></span>
-                        <h2><a href="single.html">Hi there! Welcome to our New Website and Blog</a></h2>
-                        <a href="single.html">Read Article</a>
-                    </article>
-                </div>
-                <div class="col-lg-3">
-                    <article class="post"><span class="ico icon-img"></span>
-                        <h2><a href="single.html">Hi there! Welcome to our New Website and Blog</a></h2>
-                        <a href="single.html">Read Article</a>
-                    </article>
-                </div>
+                <?php
+                        }
+                    }
+
+                ?>
             </div>
-           <h5 style="text-align: center;"><a href="">View All</a></h5>
+           <h5 style="text-align: center;"><a href="index.php">View All</a></h5>
         </div>
     </main>
 </div>

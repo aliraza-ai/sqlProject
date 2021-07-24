@@ -26,48 +26,35 @@
             top: 50%;
             left: 50%;
         }
+        .mylink:hover
+        {
+            color: #03a9f4 !important;
+        }
     </style>
 </head>
 <body>
 <!-- Pre loader -->
-<div id="loader" class="loader">
-    <div class="plane-container">
-        <div class="l-s-2 blink">LOADING</div>
-    </div>
-</div>
+
 
 <div id="app" class="paper-loading">
 <div class="blog">
     <!-- Header -->
-<nav class="mainnav navbar navbar-default justify-content-between">
-    <div class="container relative">
-        <a class="offcanvas dl-trigger paper-nav-toggle" data-toggle="offcanvas"
-           aria-expanded="false" aria-label="Toggle navigation">
-            <i></i>
-        </a>
-        <a class="navbar-brand" href="index.php">
-            <img class="d-inline-block align-top" alt="" width="150" src="assets/img/basic/logo.png">
-        </a>
-        <div class="paper_menu">
-            <div id="dl-menu" class="xv-menuwrapper responsive-menu">
-    <ul class="dl-menu align-items-center">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">SQL</a>
-        <li><a href="#">SQL Quries Tokans</a>
-        <li><a href="#">Contact Us</a>
-           
-      
-    </ul>
-</div>
-<!-- Login modal -->
-        </div>
-    </div>
-</nav>
+    <?php
+
+    include_once 'includes/navbar.php';
+    $m=new ManageClient();
+    if(!isset($_POST['id']))
+    {
+
+    }
+
+    $get=$m->getArticleById($_GET['id']);
+    $gets=$get->fetch_assoc();
+
+    ?>
     <div class="search-section">
         <div class="container">
-            <h1>Documentations
-                <small>version: 1.0</small>
-            </h1>
+            <h1 style="margin-top: 10px;">SQL Evaluations Scenarios</h1>
         </div>
     </div>
     <div class="container">
@@ -77,50 +64,9 @@
                     <div class="">
                         <section class="sidebar p-t-b-40">
 
-                            <ul class="sidebar-menu scroll">
-                                <li>
-                                    <a href="#introduction">
-                                        <i class="icon icon-smiling-face"></i> <span>Introduction</span>
-                                    </a>
-                                </li>
-                                <li class="treeview">
-                                    <a href="#">
-                                        <i class="icon icon-folders"></i>
-                                        <span>Files & Folders</span>
-                                        <span class="badge badge-primary pull-right">4</span>
-                                    </a>
-                                    <ul class="treeview-menu">
-                                        <li><a href="#structure"><i class="icon icon-circle-o"></i> Directory Structure</a>
-                                        </li>
-                                        <li><a href="#partials"><i class="icon icon-folder5"></i>Partials</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#installation">
-                                        <i class="icon icon-clipboard-list"></i> <span>Installation</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#production">
-                                        <i class="icon icon-clipboard-list"></i> <span>Build Production Version</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#main_menu">
-                                        <i class="icon icon-clipboard-list"></i> <span>Main Navigation Bar</span>
-                                    </a>
-                                </li>
+                            <h3 style="font-size: 15px; font-weight: bold;">SQL INTRODUCTION</h3>
+                               <a href="view_all.php?id=2" class="mylink" style="color: black;"> <p style="font-weight: bold;">TEST NO ONE</p></a>
 
-
-                                <li class="header">LABELS</li>
-                                <li><a href="#"><i class="icon icon-circle-o text-red"></i> <span>Important</span></a>
-                                </li>
-                                <li><a href="#"><i class="icon icon-circle-o text-yellow"></i> <span>Warning</span></a>
-                                </li>
-                                <li><a href="#"><i class="icon icon-circle-o text-aqua"></i>
-                                    <span>Information</span></a>
-                                </li>
-                            </ul>
                         </section>
                     </div>
                     <!-- /.sidebar -->
@@ -130,13 +76,9 @@
                 <section id="introduction">
                     <div class="row">
                         <div class="col-md-12">
-                            <h4><i class="icon icon-smiling-face"></i> Introduction</h4>
+                            <h4> <?php echo $gets['title']; ?></h4>
                             <hr>
-                            <p>
-                                Thank you for purchasing this template. We covered almost everything in this document that
-                                how easily you can setup. If you have any questions that
-                                are beyond the scope of this help file, please feel free to contact us..
-                            </p>
+                            <?php echo $gets['article_detail']; ?>
                         </div>
                     </div>
                 </section>
@@ -504,7 +446,7 @@ CLI version 1.2.1</code></pre>
             </article>
         </div>
     </div>
-</main>
+</div>
 <footer>
     <div class="container">
        <div class="copyrights">

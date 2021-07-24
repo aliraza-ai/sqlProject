@@ -14,10 +14,10 @@ include_once "admin/classes/manageClient.php";
         <div class="paper_menu">
             <div id="dl-menu" class="xv-menuwrapper responsive-menu">
                 <ul class="dl-menu align-items-center">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">SQL</a>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="view_all.php">SQL</a>
                     <li><a href="#">SQL Quries Tokans</a>
-                    <li><a href="#">Contact Us</a>
+                    <li><a href="contact.php">Contact Us</a>
 
 
                 </ul>
