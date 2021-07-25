@@ -124,9 +124,7 @@
                                  </div>
                                  <div class="form-group">
                                      <label>Example Code</label>
-                                     <textarea name="example_code">
-
-                                     </textarea>
+                                     <input type="text" class="form-control" name="example_code">
                                  </div>
                                  <div class="form-group">
                                      <label>Quiz</label>

@@ -48,6 +48,9 @@ class MyAdmin
 
     function deleteCats($id)
     {
+
+        $select2="delete from articles where cat='$id'";
+        $this->db->delete($select2);
         $select="delete from sql_cats where id='$id'";
         return $this->db->delete($select);
     }
@@ -62,6 +65,9 @@ class MyAdmin
 
     function updateArt($cat,$title,$article,$example_detail,$example_code,$quiz,$id)
     {
+        $article =$this->db->link->real_escape_string($article);
+        $example_detail =$this->db->link->real_escape_string($example_detail);
+        $example_code =$this->db->link->real_escape_string($example_code);
         return $this->db->insert("update articles set cat='$cat',title='$title',article_detail='$article',example_details='$example_detail',example_code='$example_code',quiz='$quiz' where id='$id'");
     }
 

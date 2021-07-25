@@ -9,35 +9,27 @@ if($res!=false)
 {
 
 
-    while ($result=$res->fetch_field())
+//    while ($result=$res->fetch_field())
+//    {
+
+        while ($result=$res->fetch_assoc())
     {
-        echo '<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">'.$result->name.'</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>';
-  //  echo $result->name;  //getting filed name
-        $total=$res->fetch_array();
-      // var_dump($total[2]);
-        echo '
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
 
-  </tbody>
-</table>';
+//        echo $result->name;  //getting filed name
+//        $total=$res->fetch_array();
+//         echo $total[0];
+//        echo $total[0];
 
 
+        var_dump($result);
 
     }
+
+
+
+
+
+
 }else
 {
     echo $res;

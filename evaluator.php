@@ -102,9 +102,7 @@ $db=new DB();
 
                             <?php
                             $result=$db->link->query("SHOW TABLES FROM demo");
-                            $result1=$db->link->query("SELECT SUM(TABLE_ROWS) 
-     FROM INFORMATION_SCHEMA.TABLES 
-     WHERE TABLE_SCHEMA = 'demo';");
+
                          //   var_dump($result);
                                 while ($res=$result->fetch_row())
                                 {
