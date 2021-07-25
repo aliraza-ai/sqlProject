@@ -105,7 +105,7 @@ $db=new DB();
                             $result1=$db->link->query("SELECT SUM(TABLE_ROWS) 
      FROM INFORMATION_SCHEMA.TABLES 
      WHERE TABLE_SCHEMA = 'demo';");
-                            var_dump($result);
+                         //   var_dump($result);
                                 while ($res=$result->fetch_row())
                                 {
 
@@ -170,11 +170,13 @@ $db=new DB();
                         $.ajax({
                             type: "POST",
                             url: "demodb/getQuery.php",
+
                             data: {qry: value},
                             async: false,
-                            success: function (text) {
+                            success: function (text)
+                            {
                                 response = text;
-                                alert(response)
+                                $("#result").html(response);
                             }
                         });
                     });

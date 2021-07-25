@@ -1,3 +1,25 @@
+
+<?php
+//include "demodb/db.php";
+//$mydb=new DB();
+//$path="demo.sql";
+//echo restoreMysqlDB($path,$mydb->link);
+
+
+//$restore_file = "demo.sql";
+//$server_name = "localhost";
+//$username = "root";
+//$password = "";
+//$database_name = "demo";
+//
+//$cmd = "mysql -h {$server_name} -u {$username} -p{$password} {$database_name} < $restore_file";
+//exec($cmd);
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
