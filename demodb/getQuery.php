@@ -12,16 +12,14 @@ if(!$query)
 if (strpos($query, 'select') !== false || strpos($query, 'SELECT') !== false)
 {
     $res=$db->insert($query);
-    while ($result=$res->fetch_field())
+    $total=0;
+    while ($result=$res->fetch_assoc())
     {
-
-
-       echo $result->name."<br>";
-       while ($my=$res->fetch_array())
-       echo $my[0]."<br>";
-
-
+           print_r($result);
+           echo "<br><br>";
+           $total++;
     }
+    echo "Total Database Record:".$total;
 }else  if (strpos($query, 'update') !== false || strpos($query, 'UPDATE') !== false)
 {
         $res=$db->update($query);
