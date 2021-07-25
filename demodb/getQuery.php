@@ -9,12 +9,10 @@ if($res!=false)
 {
     while ($result=$res->fetch_field())
     {
-       echo $result->name;  //getting filed name
-
-           while ($value=$res->fetch_array())
-           {
-                var_dump($value[0]);
-           }
+  //  echo $result->name;  //getting filed name
+        $total=$res->fetch_array();
+        echo sizeof($total[0]);
+      // var_dump($total[2]);
 
 
 
