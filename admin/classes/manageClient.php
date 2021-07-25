@@ -10,6 +10,11 @@ class ManageClient
     {
         $this->db = new Database();
     }
+    public function getTopArticle()
+    {
+
+        return $this->db->select("select * from articles ORDER BY id ASC LIMIT 1");
+    }
 
     public function getRandomHome()
     {
@@ -25,6 +30,17 @@ class ManageClient
     {
         return $this->db->select("select * from articles where id='$id'");
     }
+    function getArticleBycat($id)
+    {
+        return $this->db->select("select * from articles where cat='$id'");
+    }
+
+    function getAllCats()
+    {
+        $select="select * from sql_cats";
+        return $this->db->select($select);
+    }
+
 
 
 }

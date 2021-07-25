@@ -1,3 +1,7 @@
+<?php
+include_once "demodb/db.php";
+$db=new DB();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,35 +95,25 @@
                 <aside class="main-sidebar ">
                     <div class="">
                         <section class="sidebar p-t-b-40">
+                           <h6 style="font-weight: bold;">Database Information</h6>
+                            <br>
+                            <b>Database Name: <span style="color: #0a6aa1;">demo</span> </b>
+                            <br><br>
 
                             <?php
-                                $cat=$m->getAllCats();
-                                if($cat)
+                            $result=$db->link->query("SHOW TABLES FROM demo");
+                            $result1=$db->link->query("SELECT SUM(TABLE_ROWS) 
+     FROM INFORMATION_SCHEMA.TABLES 
+     WHERE TABLE_SCHEMA = 'demo';");
+                            var_dump($result);
+                                while ($res=$result->fetch_row())
                                 {
-                                    while ($cats=$cat->fetch_assoc())
-                                    {
 
                             ?>
-                            <h3 class="heading" style="font-size: 15px; font-weight: bold;"><?php echo $cats['title']; ?></h3>
-                                        <?php
-                                        $art=$m->getArticleBycat($cats['id']);
-                                        if($art)
-                                        {
-                                            while ($arts=$art->fetch_assoc())
-                                            {
-                                            ?>
-                            <a href="view_all.php?id=<?php echo $arts['id']; ?>"  class="mylink" style="color: #606676;margin-bottom: 0;"> <p style="font-weight: bold;padding-left: 10px;margin-bottom: 0; font-size: 12px;"><?php echo $arts['title']; ?></p></a>
-
+                            <b><?php echo $res[0] ."<br>"; ?></b>
                             <?php
-
-                            }
-                            }
-                            ?>
-
-                            <?php
-
-                                    }
                                 }
+
                             ?>
 
                         </section>
@@ -130,54 +124,17 @@
             <article class="col-md-9 p-b-40 b-l p-40">
                 <section id="introduction">
                     <div class="row">
-                        <div class="col-md-12">
-                            <h4 style="font-weight: 500;"> <?php echo $gets['title'] ." Statement"; ?></h4>
-                            <hr>
-                            <?php echo $gets['article_detail']; ?>
-                            <br>
-                            <br>
-                            <?php
-                            if($gets['example_details'] || $gets['example_code'])
-                            {
-                                ?>
-
-                            <h4 style="font-weight: 500;"> <?php echo $gets['title']." Example"; ?></h4>
-                                <hr>
-                         <?php
-
-                            echo $gets['example_details']; ?>
-
-
-
-
-                                <code class="hljs"> <?php
-                                    echo $gets['example_code']; ?></code>
-                                <br>
-                                <a href="evaluator.php?id=<?php echo $gets['id']; ?>" class="btn btn-primary">Try Now</a>
-
-
-
-                            <?php
-                            }
-                            ?>
-
-                            <?php
-                            if($gets['quiz'])
-                            {
-                            ?> <br><br>
-                                    <hr>
-
-                                <h4 style="font-weight: 500;"> SQL Quiz Test</h4>
-                                <p>Test your SQL skills at This plateform</p>
-
-                                    <a class="btn btn-primary" href=" <?php
-                                    echo $gets['quiz'];
-                                    ?>">Start SQL Quiz</a>
+                        <div class="col-md-12" style="height: 60vh;">
+                            <div style="background: #f5f2f0;padding: 25px;">
+                                <textarea class="form-control"  style="resize: none;" id="input"><?php echo $gets['example_code']; ?></textarea>
+                                <p style="color: black;font-size: 14px;">Edit the SQL Statement, and click "Run SQL" to see the result.</p>
+                                <button onclick="myquery()" class="btn btn-primary">Run SQL</button>
                                 <br><br>
-                                <hr>
-                            <?php
-                            }
-                            ?>
+                                <h4 style="color:black;">Result:</h4>
+                                <div style="background: white;padding: 10px;" id="result">
+                                    Click "Run SQL" to execute the SQL statement above.
+                                </div>
+                            </div>
 
                         </div>
                     </div>
@@ -200,6 +157,35 @@
 
 <!--End Page page_wrrapper -->
 <script src="assets/js/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+            function myquery()
+            {
+                var value=$("#input").val();
+                result=value.match("select")[0];
+                if(result)
+                {
+                    $(document).ready(function() {
+                        var response = '';
+                        $.ajax({
+                            type: "POST",
+                            url: "demodb/getQuery.php",
+                            data: {qry: value},
+                            async: false,
+                            success: function (text) {
+                                response = text;
+                                alert(response)
+                            }
+                        });
+                    });
+                }
+
+
+
+            }
+
+    </script>
+
 
 </body>
 </html>

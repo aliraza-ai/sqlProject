@@ -54,6 +54,9 @@ class MyAdmin
 
     function addArticle($cat,$title,$article,$example_detail,$example_code,$quiz)
     {
+        $article =$this->db->link->real_escape_string($article);
+        $example_detail =$this->db->link->real_escape_string($example_detail);
+        $example_code =$this->db->link->real_escape_string($example_code);
         return $this->db->insert("INSERT INTO articles(cat,title,article_detail,example_details,example_code,quiz,date) VALUES('$cat','$title','$article','$example_detail','$example_code','$quiz',NOW())");
     }
 

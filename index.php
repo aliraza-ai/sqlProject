@@ -103,9 +103,11 @@ include_once 'includes/navbar.php';
 
                 <div class="col-lg-3">
                     <article class="post"><span class="ico icon-document-text"></span>
-                        <h2><a href="single.html"><?php echo $getsHome['title'];
+                        <h2><a href="view_all.php?id=<?php echo $getsHome['id'];
+                            ?>"><?php echo $getsHome['title'];
                                 ?></a></h2>
-                        <a href="single.html">Read Article</a>
+                        <a href="view_all.php?id=<?php echo $getsHome['id'];
+                        ?>">Read Article</a>
                     </article>
                 </div>
                 <?php
@@ -114,7 +116,7 @@ include_once 'includes/navbar.php';
 
                 ?>
             </div>
-           <h5 style="text-align: center;"><a href="index.php">View All</a></h5>
+           <h5 style="text-align: center;"><a href="view_all.php">View All</a></h5>
         </div>
     </main>
 </div>
