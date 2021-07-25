@@ -1,4 +1,7 @@
+
 <?php
+
+
 require 'classes/adminLogin.php';
 $al=new adminlogin();
 if (isset($_POST['adminLogin'])) {
@@ -100,3 +103,6 @@ if (isset($_POST['adminLogin'])) {
         
     </body>
 </html>
+
+
+

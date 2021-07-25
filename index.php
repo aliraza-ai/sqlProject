@@ -1,22 +1,47 @@
-
 <?php
-//include "demodb/db.php";
-//$mydb=new DB();
-//$path="demo.sql";
-//echo restoreMysqlDB($path,$mydb->link);
+$conn = mysqli_connect("localhost", "root", "", "demo");
+$filePath = "demo.sql";
+function restoreMysqlDB($filePath, $conn)
+{
+    $sql = '';
+    $error = '';
 
+    if (file_exists($filePath)) {
+        $lines = file($filePath);
 
-//$restore_file = "demo.sql";
-//$server_name = "localhost";
-//$username = "root";
-//$password = "";
-//$database_name = "demo";
-//
-//$cmd = "mysql -h {$server_name} -u {$username} -p{$password} {$database_name} < $restore_file";
-//exec($cmd);
+        foreach ($lines as $line) {
 
+            // Ignoring comments from the SQL script
+            if (substr($line, 0, 2) == '--' || $line == '') {
+                continue;
+            }
 
+            $sql .= $line;
 
+            if (substr(trim($line), - 1, 1) == ';') {
+                $result = mysqli_query($conn, $sql);
+                if (! $result) {
+                    $error .= mysqli_error($conn) . "\n";
+                }
+                $sql = '';
+            }
+        } // end foreach
+
+        if ($error) {
+            $response = array(
+                "type" => "error",
+                "message" => $error
+            );
+        } else {
+            $response = array(
+                "type" => "success",
+                "message" => "Database Restore Completed Successfully."
+            );
+        }
+    } // end if file exists
+    return $response;
+}
+restoreMysqlDB($filePath,$conn);
 ?>
 
 
