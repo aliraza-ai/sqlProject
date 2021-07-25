@@ -122,9 +122,9 @@ $db=new DB();
             <article class="col-md-9 p-b-40 b-l p-40">
                 <section id="introduction">
                     <div class="row">
-                        <div class="col-md-12" style="height: 60vh;">
+                        <div class="col-md-12" style="min-height: 60vh;">
                             <div style="background: #f5f2f0;padding: 25px;">
-                                <textarea class="form-control"  style="resize: none;" id="input"><?php echo $gets['example_code']; ?></textarea>
+                                <textarea class="form-control"  style="resize: none;" id="input" required><?php echo $gets['example_code']; ?></textarea>
                                 <p style="color: black;font-size: 14px;">Edit the SQL Statement, and click "Run SQL" to see the result.</p>
                                 <button onclick="myquery()" class="btn btn-primary">Run SQL</button>
                                 <br><br>
@@ -160,9 +160,8 @@ $db=new DB();
             function myquery()
             {
                 var value=$("#input").val();
-                result=value.match("select")[0];
-                if(result)
-                {
+               // result=value.match("select")[0];
+
                     $(document).ready(function() {
                         var response = '';
                         $.ajax({
@@ -178,7 +177,7 @@ $db=new DB();
                             }
                         });
                     });
-                }
+
 
 
 
