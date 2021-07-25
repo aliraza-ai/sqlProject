@@ -99,17 +99,35 @@ $db=new DB();
                             <br>
                             <b>Database Name: <span style="color: #0a6aa1;">demo</span> </b>
                             <br><br>
-
+                            <div class="row">
+                                <div class="col-6"><b>Table Name</b></div>
+                                <div class="col-6"><b>Total Record</b></div>
+                            </div>
+                            <br>
                             <?php
                             $result=$db->link->query("SHOW TABLES FROM demo");
-
                          //   var_dump($result);
                                 while ($res=$result->fetch_row())
                                 {
 
                             ?>
-                            <b><?php echo $res[0] ."<br>"; ?></b>
+
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <b><?php echo $res[0] ."<br>"; ?>
+                                            </b></div>
+                                        <div class="col-6">
+                                            <?php
+                                            $query="select * from ".$res[0]."";
+                                            $co=$db->select($query);
+                                            $cos=$co->num_rows;
+                                            echo $cos;
+                                            ?>
+                                        </div>
+                                    </div>
+
                             <?php
+
                                 }
 
                             ?>

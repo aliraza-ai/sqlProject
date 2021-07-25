@@ -16,7 +16,6 @@ include_once "admin/classes/manageClient.php";
                 <ul class="dl-menu align-items-center">
                     <li><a href="index.php">Home</a></li>
                     <li><a href="view_all.php">SQL</a>
-                    <li><a href="#">SQL Quries Tokans</a>
                     <li><a href="contact.php">Contact Us</a>
 
 
